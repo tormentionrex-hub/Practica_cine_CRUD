@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cine Explore - Home</title>
+    <link rel="stylesheet" href="../styles/home.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="Cartelera.html">Cartelera</a></li>
+                <li><a href="Salas.html">Salas</a></li>
+                <li><a href="#">Películas</a></li>
+                <li><a href="#">Boletos</a></li>
+                <li><a href="dashboardAdmin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+
+
+
+
+    <main class="hero-section">
+        <h1>BIENVENIDO A HORRORIX</h1>
+        <p>Vive la magia del cine de horror con la mejor calidad y las salas más modernas de Costa Rica.
+        </p>
+        <button class="cta-button" id="exploreBtn">Ver Cartelera</button>
+    </main>
+
+
+    <!-- Carrusel de Banners Publicitarios -->
+    <section class="banner-carousel">
+        <div class="banner-track" id="bannerTrack">
+            <div class="banner-slide">
+                <img src="../img/publiBanner.png" alt="Publicidad 1">
+            </div>
+            <div class="banner-slide">
+                <img src="../img/publibanner2.png" alt="Publicidad 2">
+            </div>
+        </div>
+
+        <!-- Flechas de navegación -->
+        <button class="banner-nav prev" id="bannerPrev">&#10094;</button>
+        <button class="banner-nav next" id="bannerNext">&#10095;</button>
+    </section>
+
+    <h2 class="carrusel-title">PREVENTA/PROXIMOS ESTRENOS</h2>
+    <div class="carrusel-container">
+        <div class="carrusel-track" id="carruselTrack">
+            <!-- Las imágenes estaran en js mediante una variable llamada images -->
+        </div>
+    </div>
+
+    <!--Cartelera Semanal -->
+    <section class="weekly-billboard">
+        <h2 class="carrusel-title">CARTELERA SEMANAL</h2>
+        <div class="billboard-container">
+            <button class="billboard-nav prev" id="billboardPrev">&#10094;</button>
+            <div class="billboard-grid" id="billboardGrid">
+                <!-- Espacio para colocar imágenes al gusto -->
+                <div class="movie-card">
+                    <div class="card-tag">ESTRENO</div>
+                    <img src="https://m.media-amazon.com/images/M/MV5BZmQ3NmIxNTgtYjFiNS00NzliLWI0YzAtZDkxY2E0YWIxZDEwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Pelicula 1">
+                    <button class="buy-button"><i class="fas fa-ticket-alt"></i> VER HORARIOS</button>
+                </div>
+                <div class="movie-card">
+                    <div class="card-tag">ESTRENO</div>
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTVjMzNmZGYtOWU5NS00NDYzLThhZTktZGNlODIwYWVhMDRmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Pelicula 2">
+                    <button class="buy-button"><i class="fas fa-ticket-alt"></i> VER HORARIOS</button>
+                </div>
+                <div class="movie-card">
+                    <div class="card-tag">ESTRENO</div>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHXm2Lc8UxzUMAuqELpcwsLbS15REcyV5bSA&s" alt="Pelicula 3">
+                    <button class="buy-button"><i class="fas fa-ticket-alt"></i> VER HORARIOS</button>
+                </div>
+                <div class="movie-card">
+                    <div class="card-tag">ESTRENO</div>
+                    <img src="../img/hallowen.jpg" alt="Pelicula 4">
+                    <button class="buy-button"><i class="fas fa-ticket-alt"></i> VER HORARIOS</button>
+                </div>
+            </div>
+            <button class="billboard-nav next" id="billboardNext">&#10095;</button>
+        </div>
+    </section>
+    <script type="module" src="../js/home.js"></script>
+
+</body>
+
+</html>

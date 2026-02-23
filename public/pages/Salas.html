@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horrorix - Selección de Asientos</title>
+    <link rel="stylesheet" href="../styles/home.css">
+    <link rel="stylesheet" href="../styles/Salas.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="../pages/home.html">Home</a></li>
+                <li><a href="../pages/Cartelera.html">Cartelera</a></li>
+                <li><a href="../pages/Salas.html">Salas</a></li>
+                <li><a href="#">Películas</a></li>
+                <li><a href="#">Boletos</a></li>
+                <li><a href="../pages/dashboardAdmin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="contenedorPrincipalSalas">
+        <section class="detallePelicula" id="detallePeliculaId">
+            <!-- Cargado dinámicamente -->
+            <div class="esqueletoCarga">Cargando información de la película...</div>
+        </section>
+
+        <section class="seleccionAsientos">
+            <h2 class="tituloSeccion">ELIGE TU ASIENTO</h2>
+
+            <div class="pantallaCine">PANTALLA</div>
+
+            <div class="rejillaAsientos" id="rejillaAsientosId">
+                <!-- 30 asientos generados por JS -->
+            </div>
+
+            <div class="leyendaAsientos">
+                <div class="itemLeyenda"><span class="asiento disponible"></span> Disponible</div>
+                <div class="itemLeyenda"><span class="asiento seleccionado"></span> Seleccionado</div>
+                <div class="itemLeyenda"><span class="asiento ocupado"></span> Ocupado</div>
+            </div>
+
+            <div class="resumenCompra" id="resumenCompraId">
+                <p>Asientos seleccionados: <span id="contadorAsientos">0</span></p>
+                <p>Total: $<span id="totalPrecio">0</span></p>
+                <button class="botonComprarFinal" id="botonComprarFinalId">CONFIRMAR COMPRA</button>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="../js/Salas.js"></script>
+</body>
+
+</html>

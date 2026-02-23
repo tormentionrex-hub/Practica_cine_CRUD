@@ -30,26 +30,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const cargarCarteleraAlDia = async () => {
         const listaPeliculas = await obtenerCartelera();
-        cuerpoTablaCartelera.innerHTML = "";
+        cuerpoTablaCartelera.textContent = "";
 
-        listaPeliculas.forEach(item => {
+        for (let index = 0; index < listaPeliculas.length; index++) {
+            const item = listaPeliculas[index];
             const fila = document.createElement("tr");
-            fila.innerHTML = `
-                <td>
-                    <img src="${item.imagen}" 
-                         class="miniaturaPelicula" 
-                         alt="${item.titulo}" 
-                         onerror="this.src='../img/publiBanner.png'; this.style.opacity='0.5';">
-                </td>
-                <td>${item.titulo}</td>
-                <td><span class="insigniaEtiqueta">${item.tag || "SIN ETIQUETA"}</span></td>
-                <td class="acciones">
-                    <button class="boton botonEditar" data-id="${item.id}">EDITAR</button>
-                    <button class="boton botonEliminar" data-id="${item.id}">ELIMINAR</button>
-                </td>
-            `;
+
+            // Imagen columna
+            const tdImagen = document.createElement("td");
+            const img = document.createElement("img");
+            img.src = item.imagen;
+            img.className = "miniaturaPelicula";
+            img.alt = item.titulo;
+            img.onerror = () => {
+                img.src = '../img/publiBanner.png';
+                img.style.opacity = '0.5';
+            };
+            tdImagen.appendChild(img);
+
+            // Title Column
+            const tdTitulo = document.createElement("td");
+            tdTitulo.textContent = item.titulo;
+
+            // Tag Column
+            const tdTag = document.createElement("td");
+            const spanTag = document.createElement("span");
+            spanTag.className = "insigniaEtiqueta";
+            spanTag.textContent = item.tag || "SIN ETIQUETA";
+            tdTag.appendChild(spanTag);
+
+            // Actions Column
+            const tdAcciones = document.createElement("td");
+            tdAcciones.className = "acciones";
+
+            const btnEditar = document.createElement("button");
+            btnEditar.className = "boton botonEditar";
+            btnEditar.textContent = "EDITAR";
+            btnEditar.setAttribute("data-id", item.id);
+
+            const btnEliminar = document.createElement("button");
+            btnEliminar.className = "boton botonEliminar";
+            btnEliminar.textContent = "ELIMINAR";
+            btnEliminar.setAttribute("data-id", item.id);
+
+            tdAcciones.appendChild(btnEditar);
+            tdAcciones.appendChild(btnEliminar);
+
+            // Assemble Row
+            fila.appendChild(tdImagen);
+            fila.appendChild(tdTitulo);
+            fila.appendChild(tdTag);
+            fila.appendChild(tdAcciones);
+
             cuerpoTablaCartelera.appendChild(fila);
-        });
+        }
     };
 
     formularioCartelera.addEventListener("submit", async (evento) => {
@@ -165,21 +199,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const cargarSalasAlDia = async () => {
         const listaSalas = await obtenerSalas();
-        cuerpoTablaSalas.innerHTML = "";
+        cuerpoTablaSalas.textContent = "";
 
-        listaSalas.forEach(sala => {
+        for (let index = 0; index < listaSalas.length; index++) {
+            const sala = listaSalas[index];
             const fila = document.createElement("tr");
-            fila.innerHTML = `
-                <td>${sala.nombre}</td>
-                <td>${sala.capacidad}</td>
-                <td><span class="insigniaTipo">${sala.tipo}</span></td>
-                <td class="acciones">
-                    <button class="boton botonEditar" data-id="${sala.id}">EDITAR</button>
-                    <button class="boton botonEliminar" data-id="${sala.id}">ELIMINAR</button>
-                </td>
-            `;
+
+            // Name Column
+            const tdNombre = document.createElement("td");
+            tdNombre.textContent = sala.nombre;
+
+            // Capacity Column
+            const tdCapacidad = document.createElement("td");
+            tdCapacidad.textContent = sala.capacidad;
+
+            // Type Column
+            const tdTipo = document.createElement("td");
+            const spanTipo = document.createElement("span");
+            spanTipo.className = "insigniaTipo";
+            spanTipo.textContent = sala.tipo;
+            tdTipo.appendChild(spanTipo);
+
+            // Actions Column
+            const tdAcciones = document.createElement("td");
+            tdAcciones.className = "acciones";
+
+            const btnEditar = document.createElement("button");
+            btnEditar.className = "boton botonEditar";
+            btnEditar.textContent = "EDITAR";
+            btnEditar.setAttribute("data-id", sala.id);
+
+            const btnEliminar = document.createElement("button");
+            btnEliminar.className = "boton botonEliminar";
+            btnEliminar.textContent = "ELIMINAR";
+            btnEliminar.setAttribute("data-id", sala.id);
+
+            tdAcciones.appendChild(btnEditar);
+            tdAcciones.appendChild(btnEliminar);
+
+            // Assemble Row
+            fila.appendChild(tdNombre);
+            fila.appendChild(tdCapacidad);
+            fila.appendChild(tdTipo);
+            fila.appendChild(tdAcciones);
+
             cuerpoTablaSalas.appendChild(fila);
-        });
+        }
     };
 
     formularioSalas.addEventListener("submit", async (evento) => {

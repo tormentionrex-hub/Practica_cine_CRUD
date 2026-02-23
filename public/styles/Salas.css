@@ -1,0 +1,236 @@
+.contenedorPrincipalSalas {
+    margin-top: 100px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    min-height: calc(100vh - 100px);
+}
+
+/* Detalle de la película */
+.detallePelicula {
+    display: flex;
+    gap: 40px;
+    max-width: 1000px;
+    width: 90%;
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(10px);
+    border: 1px solid #3b0000;
+    padding: 30px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.9);
+    animation: fadeIn 1s ease;
+}
+
+.posterPelicula {
+    width: 300px;
+    height: 450px;
+    object-fit: cover;
+    border: 2px solid #7a0606;
+    box-shadow: 0 0 20px rgba(122, 6, 6, 0.3);
+}
+
+.infoPelicula {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.infoPelicula h1 {
+    font-size: 3rem;
+    color: #cc0000;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0;
+}
+
+.etiquetaDetalle {
+    display: inline-block;
+    background: #7a0606;
+    color: white;
+    padding: 5px 15px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    width: fit-content;
+    border-radius: 3px;
+}
+
+.sinopsis {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #bcbcbc;
+}
+
+.metadatos {
+    margin-top: auto;
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+    color: #7a0606;
+    font-weight: bold;
+}
+
+/* Selección de Asientos */
+.seleccionAsientos {
+    width: 90%;
+    max-width: 800px;
+    background: rgba(10, 10, 10, 0.9);
+    padding: 40px;
+    border-top: 5px solid #7a0606;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 1);
+}
+
+.tituloSeccion {
+    color: #7a0606;
+    letter-spacing: 5px;
+    font-size: 2rem;
+}
+
+.pantallaCine {
+    width: 80%;
+    height: 10px;
+    background: #bcbcbc;
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
+    text-align: center;
+    line-height: 0;
+    color: #555;
+    font-size: 0.8rem;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.pantallaCine::after {
+    content: "PANTALLA";
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    letter-spacing: 10px;
+}
+
+.rejillaAsientos {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.asiento {
+    width: 45px;
+    height: 45px;
+    background: #222;
+    border: 2px solid #444;
+    border-radius: 10px 10px 5px 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.asiento::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 2px;
+    right: 2px;
+    height: 5px;
+    background: #111;
+    border-radius: 0 0 5px 5px;
+}
+
+.asiento.disponible:hover {
+    background: #444;
+    border-color: #7a0606;
+    transform: scale(1.1);
+}
+
+.asiento.seleccionado {
+    background: #7a0606;
+    border-color: #ff0000;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+.asiento.ocupado {
+    background: #0d0d0d;
+    border-color: #1a1a1a;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.leyendaAsientos {
+    display: flex;
+    gap: 30px;
+}
+
+.itemLeyenda {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.itemLeyenda .asiento {
+    width: 25px;
+    height: 25px;
+    cursor: default;
+}
+
+.resumenCompra {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    width: 100%;
+}
+
+.resumenCompra p {
+    font-size: 1.2rem;
+    color: #bcbcbc;
+}
+
+.resumenCompra span {
+    color: #7a0606;
+    font-weight: bold;
+}
+
+.botonComprarFinal {
+    background: #7a0606;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 900;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.botonComprarFinal:hover {
+    background: #a30808;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(163, 8, 8, 0.5);
+}
+
+@media (max-width: 768px) {
+    .detallePelicula {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .posterPelicula {
+        width: 100%;
+        height: auto;
+    }
+
+    .rejillaAsientos {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}

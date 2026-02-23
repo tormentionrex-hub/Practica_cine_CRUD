@@ -1,15 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Horrorix - Panel de Administración</title>
+    <link rel="stylesheet" href="../styles/dashboardAdmin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <!-- SweetAlert para las alertas-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
+
 <body>
-    
 
-    <h1>Soy la segunda pagina</h1>
+    <header>
+        <div class="logotipo">Horrorix Admin</div>
+        <nav>
+            <ul>
+                <li><a href="../pages/home.html">Volver a la Web</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <script type="module" src="../js/index2.js"></script>
+    <main>
+        <h1>PANEL DE GESTIÓN ADMINISTRATIVA</h1>
+
+        <div class="rejillaAdmin">
+            <!-- Sección Cartelera -->
+            <section class="seccionAdmin">
+                <h2>Gestión de Cartelera</h2>
+                <form class="formularioAdmin" id="formularioCarteleraId">
+                    <input type="hidden" id="carteleraId">
+                    <div class="grupoEntrada">
+                        <label>Título de la Película</label>
+                        <input type="text" id="carteleraTitulo" placeholder="Ej: El Exorcista" required>
+                    </div>
+                    <div class="grupoEntrada">
+                        <label>URL de la Imagen</label>
+                        <input type="text" id="carteleraImagen" placeholder="https://..." required>
+                        <!-- Vista previa de la imagen -->
+                        <div id="previewContainer" class="cajaVistaPrevia">
+                            <img id="carteleraPreview" src="" alt="Vista Previa">
+                        </div>
+                    </div>
+                    <div class="grupoEntrada">
+                        <label>Etiqueta</label>
+                        <input type="text" id="carteleraTag" placeholder="Ej: ESTRENO">
+                    </div>
+                    <button type="button" id="botonCancelarCartelera" class="boton botonSecundario"
+                        style="display: none; margin-bottom: 10px;">DEJAR DE EDITAR</button>
+                    <button type="submit" class="boton botonPrincipal">GUARDAR PELÍCULA</button>
+                </form>
+
+                <div class="contenedorTabla">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Imagen</th>
+                                <th>Título</th>
+                                <th>Etiqueta</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpoTablaCarteleraId">
+                            <!-- Datos dinámicos -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Sección Salas -->
+            <section class="seccionAdmin">
+                <h2>Gestión de Salas</h2>
+                <form class="formularioAdmin" id="formularioSalasId">
+                    <input type="hidden" id="salaId">
+                    <div class="grupoEntrada">
+                        <label>Nombre de la Sala</label>
+                        <input type="text" id="salaNombre" placeholder="Ej: Sala 01 - IMAX" required>
+                    </div>
+                    <div class="grupoEntrada">
+                        <label>Capacidad</label>
+                        <input type="number" id="salaCapacidad" placeholder="Ej: 150" required>
+                    </div>
+                    <div class="grupoEntrada">
+                        <label>Tipo de Sala</label>
+                        <select id="salaTipo">
+                            <option value="Regular">Regular</option>
+                            <option value="IMAX">IMAX</option>
+                            <option value="Macro XE">Macro XE</option>
+                            <option value="4DX">4DX</option>
+                            <option value="VIP">VIP</option>
+                        </select>
+                    </div>
+                    <button type="button" id="botonCancelarSalas" class="boton botonSecundario"
+                        style="display: none; margin-bottom: 3px;">DEJAR DE EDITAR</button>
+                    <button type="submit" class="boton botonPrincipal">GUARDAR SALA</button>
+                </form>
+
+                <div class="contenedorTabla">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Capacidad</th>
+                                <th>Tipo</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cuerpoTablaSalasId">
+                            <!-- Datos dinámicos -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script type="module" src="../js/dashboardAdmin.js"></script>
 </body>
+
 </html>

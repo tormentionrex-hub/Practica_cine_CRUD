@@ -1,0 +1,19 @@
+CÓMO ARREGLAR EL ERROR "CANNOT GET" (Navegación en subcarpetas)
+
+Este error ocurre cuando el servidor busca los archivos en la raíz, pero estos se encuentran dentro de una subcarpeta (como "pages").
+
+PASOS PARA ARREGLARLO:
+
+1. Identificar la subcarpeta: Localiza en qué carpeta están tus archivos HTML (ej: "pages").
+2. Usar rutas absolutas: En todos tus enlaces (href) y recursos (src), agrega el nombre de la carpeta al inicio de la ruta, empezando con una barra diagonal.
+
+Ejemplo:
+De: <a href="dashboardAdmin.html">
+A:  <a href="../pages/dashboardAdmin.html">
+
+Simplemente debes de usar el "../" para que el servidor sepa que debe retroceder una carpeta y buscar en la carpeta pages.
+
+Esto asegura que el servidor siempre encuentre el camino correcto sin importar en qué página estés.
+
+
+

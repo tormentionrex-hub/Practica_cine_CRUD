@@ -1,0 +1,35 @@
+Este archivo gestiona la lógica interactiva del Panel de Administración de Horrorix, conectando la interfaz de usuario con los servicios CRUD (Create, Read, Update, Delete).
+
+1. PREVISUALIZACIÓN DE IMÁGENES (entradaImagen.addEventListener("input"))
+--------------------------------------------------------------------------
+Funciona detectando cada vez que el usuario escribe o pega algo en el campo de la URL de la imagen. 
+- ¿Cómo funciona?: Cada vez que el valor cambia, asignamos ese valor al atributo "src" de una etiqueta <img> oculta.
+- Propósito: Permite que el administrador verifique si la URL es válida y cómo se verá la imagen antes de guardar los cambios.
+
+2. RENDERIZADO DINÁMICO (forEach y Template Literals)
+------------------------------------------------------
+En las funciones "cargarCarteleraAlDia" y "cargarSalasAlDia", se utiliza el método .forEach() para recorrer la lista de objetos obtenida desde el servidor.
+- ¿Qué hace?: Por cada elemento, crea una nueva fila de tabla (<tr>) e inyecta código HTML masivamente usando backticks (``).
+- dataset.id: A los botones de editar y eliminar les asignamos un atributo personalizado "data-id". Esto es CRUCIAL para saber exactamente qué registro queremos afectar cuando el usuario haga clic más tarde.
+
+3. COMUNICACIÓN ASÍNCRONA (async/await)
+---------------------------------------
+Todas las operaciones que interactúan con el servidor (fetch) se manejan con async/await.
+- Propósito: Evita que la página se congele mientras espera la respuesta del servidor. El "await" pausa la ejecución de esa función específica hasta que los datos llegan, haciendo que el código sea mucho más fácil de leer que usando promesas tradicionales (.then).
+
+4. INTERACCIONES CON SWEETALERT2 (Swal.fire)
+--------------------------------------------
+Sustituimos los aburridos "alert" y "confirm" del navegador por modales estilizados.
+- Modales de Éxito: Se disparan tras agregar o actualizar un registro. Personalizamos el fondo (#151515) y los colores de texto para que coincidan con la estética "Horrorix".
+- Confirmación de Borrado: Antes de ejecutar un DELETE, Swal.fire muestra un aviso de advertencia. Solo si el usuario confirma (.isConfirmed), se procede a llamar al servicio de eliminación.
+
+5. GESTIÓN DE ERRORES DE IMAGEN (onerror)
+------------------------------------------
+Dentro de las filas de la tabla, las imágenes tienen un atributo "onerror".
+- ¿Qué hace?: Si la URL de la imagen está rota o no carga, este evento dispara una pequeña lógica que cambia la fuente a una imagen por defecto y reduce su opacidad. Esto evita que la tabla se vea mal con iconos de "imagen rota".
+
+6. FLUJO DE EDICIÓN Y UX
+-------------------------
+- .scrollIntoView(): Cuando el usuario pulsa "EDITAR", los datos se cargan en el formulario y la página se desplaza suavemente hacia arriba para que el usuario pueda empezar a modificar de inmediato.
+- .reset(): Después de cada operación exitosa, limpiamos el formulario para dejarlo listo para una nueva entrada, y ocultamos la vista previa de la imagen.
+- value del input oculto (id): Usamos un campo oculto para guardar el ID del elemento que estamos editando. Si este campo tiene valor, el sistema sabe que debe hacer un "UPDATE" (PATCH); si está vacío, sabe que debe hacer un "CREATE" (POST).

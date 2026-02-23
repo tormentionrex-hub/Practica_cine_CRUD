@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cine Explore - Home</title>
+    <title>Horrorix - Inicio</title>
     <link rel="stylesheet" href="../styles/home.css">
 </head>
 
@@ -13,85 +13,125 @@
     <header>
         <nav>
             <ul>
-                <li><a href="home.html">Home</a></li>
-                <li><a href="Cartelera.html">Cartelera</a></li>
-                <li><a href="Salas.html">Salas</a></li>
+                <li><a href="../pages/home.html">Home</a></li>
+                <li><a href="../pages/Cartelera.html">Cartelera</a></li>
+                <li><a href="../pages/Salas.html">Salas</a></li>
                 <li><a href="#">Películas</a></li>
                 <li><a href="#">Boletos</a></li>
-                <li><a href="dashboardAdmin.html">Admin</a></li>
+                <li><a href="../pages/dashboardAdmin.html">Admin</a></li>
             </ul>
         </nav>
     </header>
 
-
-
-
-
-
-
-    <main class="hero-section">
+    <main class="seccionHero">
         <h1>BIENVENIDO A HORRORIX</h1>
         <p>Vive la magia del cine de horror con la mejor calidad y las salas más modernas de Costa Rica.
         </p>
-        <button class="cta-button" id="exploreBtn">Ver Cartelera</button>
+        <a href="../pages/Cartelera.html" class="botonCta" id="botonExplorarId">Ver Cartelera</a>
     </main>
 
-
-    <!-- Carrusel de Banners Publicitarios -->
-    <section class="banner-carousel">
-        <div class="banner-track" id="bannerTrack">
-            <div class="banner-slide">
+    <section class="carruselBanners"> <!-- Carrusel de Banners Publicitarios -->
+        <div class="pistaBanners" id="pistaBannersId">
+            <div class="diapositivaBanner">
                 <img src="../img/publiBanner.png" alt="Publicidad 1">
             </div>
-            <div class="banner-slide">
+            <div class="diapositivaBanner">
                 <img src="../img/publibanner2.png" alt="Publicidad 2">
+            </div>
+            <div class="diapositivaBanner">
+                <img src="../img/fin%20de%20semana.png" alt="Fin de Semana">
             </div>
         </div>
 
+        <button class="navegacionBanner previo" id="botonPrevioBannerId">&#10094;</button>
         <!-- Flechas de navegación -->
-        <button class="banner-nav prev" id="bannerPrev">&#10094;</button>
-        <button class="banner-nav next" id="bannerNext">&#10095;</button>
+        <button class="navegacionBanner siguiente" id="botonSiguienteBannerId">&#10095;</button>
     </section>
 
-    <h2 class="carrusel-title">PREVENTA/PROXIMOS ESTRENOS</h2>
-    <div class="carrusel-container">
-        <div class="carrusel-track" id="carruselTrack">
-            <!-- Las imágenes estaran en js mediante una variable llamada images -->
+    <h2 class="tituloCarrusel">ESTRENOS Y PRÓXIMAMENTE</h2>
+
+    <div class="contenedorCarrusel">
+        <div class="pistaCarrusel">
+            <div class="itemCarrusel">
+                <img src="../img/banner1.jpg" alt="Pelicula 1">
+            </div>
+            <div class="itemCarrusel">
+                <img src="../img/banner2.jpg" alt="Pelicula 2">
+            </div>
+            <div class="itemCarrusel">
+                <img src="../img/banner3.jpg" alt="Pelicula 3">
+            </div>
+            <div class="itemCarrusel">
+                <img src="../img/banner1.jpg" alt="Pelicula 1">
+            </div>
+            <div class="itemCarrusel">
+                <img src="../img/banner2.jpg" alt="Pelicula 2">
+            </div>
+            <div class="itemCarrusel">
+                <img src="../img/banner3.jpg" alt="Pelicula 3">
+            </div>
         </div>
     </div>
 
-    <!--Cartelera Semanal -->
-    <section class="weekly-billboard">
-        <h2 class="carrusel-title">CARTELERA SEMANAL</h2>
-        <div class="billboard-container">
-            <button class="billboard-nav prev" id="billboardPrev">&#10094;</button>
-            <div class="billboard-grid" id="billboardGrid">
-                <!-- Espacio para colocar imágenes al gusto -->
-                <div class="movie-card">
-                    <div class="card-tag">ESTRENO</div>
-                    <img src="https://m.media-amazon.com/images/M/MV5BZmQ3NmIxNTgtYjFiNS00NzliLWI0YzAtZDkxY2E0YWIxZDEwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Pelicula 1">
-                    <button class="buy-button"><i class="fas fa-ticket-alt"></i> VER HORARIOS</button>
+    <section class="carteleraSemanal"> <!-- Cartelera Semanal -->
+        <h2 class="tituloCarrusel">CARTELERA SEMANAL</h2>
+        <div class="contenedorCartelera">
+            <button class="navegacionCartelera previo" id="botonPrevioCarteleraId">&#10094;</button>
+            <div class="rejillaCartelera" id="rejillaCarteleraId">
+                <div class="tarjetaPelicula">
+                    <div class="etiquetaTarjeta">ESTRENO</div>
+                    <img src="https://m.media-amazon.com/images/M/MV5BZmQ3NmIxNTgtYjFiNS00NzliLWI0YzAtZDkxY2E0YWIxZDEwXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+                        alt="The Substance">
+                    <button class="botonComprar">Comprar Boleto</button>
                 </div>
-                <div class="movie-card">
-                    <div class="card-tag">ESTRENO</div>
-                    <img src="https://m.media-amazon.com/images/M/MV5BMTVjMzNmZGYtOWU5NS00NDYzLThhZTktZGNlODIwYWVhMDRmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Pelicula 2">
-                    <button class="buy-button"><i class="fas fa-ticket-alt"></i> VER HORARIOS</button>
+                <div class="tarjetaPelicula">
+                    <div class="etiquetaTarjeta">ESTRENO</div>
+                    <img src="https://m.media-amazon.com/images/M/MV5BMTVjMzNmZGYtOWU5NS00NDYzLThhZTktZGNlODIwYWVhMDRmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+                        alt="Pelicula 2">
+                    <button class="botonComprar">Ver Horarios</button>
                 </div>
-                <div class="movie-card">
-                    <div class="card-tag">ESTRENO</div>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHXm2Lc8UxzUMAuqELpcwsLbS15REcyV5bSA&s" alt="Pelicula 3">
-                    <button class="buy-button"><i class="fas fa-ticket-alt"></i> VER HORARIOS</button>
+                <div class="tarjetaPelicula">
+                    <div class="etiquetaTarjeta">ESTRENO</div>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHXm2Lc8UxzUMAuqELpcwsLbS15REcyV5bSA&s"
+                        alt="Pelicula 3">
+                    <button class="botonComprar">Ver Horarios</button>
                 </div>
-                <div class="movie-card">
-                    <div class="card-tag">ESTRENO</div>
-                    <img src="../img/hallowen.jpg" alt="Pelicula 4">
-                    <button class="buy-button"><i class="fas fa-ticket-alt"></i> VER HORARIOS</button>
+                <div class="tarjetaPelicula">
+                    <div class="etiquetaTarjeta">ESTRENO</div>
+                    <img src="https://m.media-amazon.com/images/S/pv-target-images/178c2a0f654a66eda07ca098fa243728b6bc7c5f4359863860e12c50be3b8e39.jpg"
+                        alt="Pelicula 4">
+                    <button class="botonComprar">Ver Horarios</button>
                 </div>
             </div>
-            <button class="billboard-nav next" id="billboardNext">&#10095;</button>
+            <button class="navegacionCartelera siguiente" id="botonSiguienteCarteleraId">&#10095;</button>
         </div>
     </section>
-    <script type="module" src="../js/home.js"></script>
+
+    <section class="promocionesEspeciales"> <!-- Promociones Especiales -->
+        <h2 class="tituloCarrusel">PROMOCIONES Y OFERTAS</h2>
+        <div class="contenedorPromos">
+            <button class="navegacionPromo previo" id="botonPrevioPromosId">&#10094;</button>
+
+            <div class="envolturaPistaPromos">
+                <div class="pistaPromos" id="pistaPromosId">
+                    <div class="diapositivaPromo">
+                        <img src="../img/publiBanner4.png" alt="Promo 1">
+                    </div>
+                    <div class="diapositivaPromo activa">
+                        <img src="../img/publiBanner5.png" alt="Promo 2">
+                    </div>
+                    <div class="diapositivaPromo">
+                        <img src="../img/publiBanner6.png" alt="Promo 3">
+                    </div>
+                </div>
+            </div>
+
+            <button class="navegacionPromo siguiente" id="botonSiguientePromosId">&#10095;</button>
+        </div>
+    </section>
+
+    <!-- Scripts -->
+    <script src="../js/home.js"></script> <!-- Script de lógica de inicio -->
 
 </body>
 

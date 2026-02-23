@@ -1,13 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap");
 
 :root {
-    --primary-color: #7a0606;
-    /* Rojo óxido un poco más brillante */
-    --accent-color: #3b0000;
-    --bg-dark: #0a0a0a;
-    --text-light: #d4d4d4;
-    /* Gris ceniza más claro para legibilidad */
-    --overlay-opacity: 0.6;
+    --colorPrimario: #7a0606;
+    --colorAcento: #3b0000;
+    --fondoOscuro: #0a0a0a;
+    --textoClaro: #d4d4d4;
+    --opacidadSuperposicion: 0.6;
 }
 
 * {
@@ -17,16 +15,15 @@
 }
 
 body {
-    font-family: 'Outfit', sans-serif;
-    background-color: var(--bg-dark);
-    color: var(--text-light);
+    font-family: "Outfit", sans-serif;
+    background-color: var(--fondoOscuro);
+    color: var(--textoClaro);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     overflow-x: hidden;
 }
 
-/* Background de la pagina con efecto de niebla/oscuridad */
 body::before {
     content: "";
     position: fixed;
@@ -34,17 +31,16 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('../img/walpaperhome.jpg');
+    background-image: url("../img/walpaperhome.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: var(--overlay-opacity);
+    opacity: var(--opacidadSuperposicion);
     filter: grayscale(80%) contrast(120%) brightness(40%);
     z-index: -1;
     pointer-events: none;
 }
 
-/* Capa de ruido/grano para esa textura de Silent Hill */
 body::after {
     content: "";
     position: fixed;
@@ -52,15 +48,13 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
-    /* Simulación de grano/ruido */
+    background: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
     opacity: 0.05;
     z-index: 0;
     pointer-events: none;
     mix-blend-mode: overlay;
 }
 
-/* Navigation Overlay for better contrast */
 header {
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
     padding: 20px 50px;
@@ -79,7 +73,7 @@ nav ul {
 
 nav ul li a {
     text-decoration: none;
-    color: var(--text-light);
+    color: var(--textoClaro);
     font-weight: 500;
     font-size: 1.1rem;
     transition: color 0.3s ease, transform 0.3s ease;
@@ -88,12 +82,11 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: var(--primary-color);
+    color: var(--colorPrimario);
     transform: translateY(-2px);
 }
 
-/* Home Content */
-.hero-section {
+.seccionHero {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -104,18 +97,18 @@ nav ul li a:hover {
     margin-top: 80px;
 }
 
-.hero-section h1 {
+.seccionHero h1 {
     font-size: 5.5rem;
     font-weight: 900;
     margin-bottom: 10px;
     letter-spacing: 5px;
-    text-shadow: 0 0 20px rgba(0, 0, 0, 1), 0 0 10px rgba(122, 6, 6, 0.4);
-    background: linear-gradient(to bottom, #f0f0f0 0%, #7a0606 60%, #1a0000 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #cc0000;
+    text-shadow:
+        3px 3px 5px rgba(0, 0, 0, 0.8),
+        0 0 25px rgba(204, 0, 0, 0.6),
+        0 0 10px rgba(0, 0, 0, 1);
     animation: flicker 4s infinite step-end, fadeIn 2s ease-out;
-    filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.2));
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
 }
 
 @keyframes flicker {
@@ -140,25 +133,23 @@ nav ul li a:hover {
     }
 }
 
-.hero-section p {
+.seccionHero p {
     font-size: 1.3rem;
     max-width: 650px;
     margin-bottom: 40px;
     color: #bcbcbc;
-    /* Un poco más claro */
     font-style: italic;
     letter-spacing: 1px;
     opacity: 1;
-    /* Opacidad total para lectura */
 }
 
-.cta-button {
+.botonCta {
+    display: inline-block;
+    text-decoration: none;
     background: #111;
     color: #9c0000;
-    /* Rojo más visible */
     padding: 18px 60px;
     border: 1px solid #7a0606;
-    /* Borde más definido */
     border-radius: 0;
     font-size: 1.1rem;
     font-weight: 700;
@@ -171,14 +162,14 @@ nav ul li a:hover {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
 }
 
-.cta-button:hover {
+.botonCta:hover {
     background: #7a0606;
     color: #fff;
     box-shadow: 0 0 25px rgba(122, 6, 6, 0.6);
     transform: scale(1.05);
 }
 
-.cta-button::after {
+.botonCta::after {
     content: "";
     position: absolute;
     top: 0;
@@ -189,8 +180,7 @@ nav ul li a:hover {
     transition: 0.5s;
 }
 
-/* Carrusel de Banners Publicitarios (Promociones) */
-.banner-carousel {
+.carruselBanners {
     width: 90%;
     max-width: 1200px;
     margin: 40px auto;
@@ -201,29 +191,36 @@ nav ul li a:hover {
     background: #000;
 }
 
-.banner-track {
+.pistaBanners {
     display: flex;
     transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1);
+    transform: translateX(calc(var(--diapositivaActual, 0) * -100%));
 }
 
-.banner-slide {
+.diapositivaBanner {
     min-width: 100%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: black;
 }
 
-.banner-slide img {
+.diapositivaBanner img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: fill;
     display: block;
     filter: grayscale(40%) contrast(1.1) brightness(0.7);
     transition: filter 0.5s ease;
 }
 
-.banner-carousel:hover .banner-slide img {
+.carruselBanners:hover .diapositivaBanner img {
     filter: grayscale(0%) contrast(1) brightness(0.9);
 }
 
-/* Flechas Siniestras */
-.banner-nav {
+.navegacionBanner {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -237,26 +234,25 @@ nav ul li a:hover {
     transition: all 0.3s ease;
 }
 
-.banner-nav:hover {
+.navegacionBanner:hover {
     background: #7a0606;
     color: #fff;
     text-shadow: 0 0 10px #ff0000;
 }
 
-.banner-nav.prev {
+.navegacionBanner.previo {
     left: 10px;
 }
 
-.banner-nav.next {
+.navegacionBanner.siguiente {
     right: 10px;
 }
 
-.cta-button:hover::after {
+.botonCta:hover::after {
     left: 100%;
 }
 
-/* Título del Carrusel Siniestro */
-.carrusel-title {
+.tituloCarrusel {
     text-align: center;
     font-size: 2.5rem;
     color: #7a0606;
@@ -268,8 +264,7 @@ nav ul li a:hover {
     opacity: 0.8;
 }
 
-/* Carrusel Siniestro */
-.carrusel-container {
+.contenedorCarrusel {
     width: 100%;
     overflow: hidden;
     padding: 30px 0;
@@ -277,18 +272,16 @@ nav ul li a:hover {
     background: linear-gradient(to right, rgba(0, 0, 0, 1) 0%, transparent 15%, transparent 85%, rgba(0, 0, 0, 1) 100%);
     z-index: 10;
     margin-top: 0;
-    /* Ya no está debajo del nav */
 }
 
-/* Efecto de Humo/Niebla debajo del carrusel */
-.carrusel-container::after {
+.contenedorCarrusel::after {
     content: "";
     position: absolute;
     bottom: -20px;
     left: 0;
     width: 200%;
     height: 120px;
-    background: url('https://www.transparenttextures.com/patterns/dust.png');
+    background: url("https://www.transparenttextures.com/patterns/dust.png");
     opacity: 0.2;
     animation: drift 30s linear infinite;
     pointer-events: none;
@@ -305,39 +298,36 @@ nav ul li a:hover {
     }
 }
 
-.carrusel-track {
+.pistaCarrusel {
     display: flex;
     gap: 0;
     width: max-content;
     animation: scroll 40s linear infinite;
 }
 
-.carrusel-track:hover {
+.pistaCarrusel:hover {
     animation-play-state: paused;
 }
 
-.carrusel-item {
+.itemCarrusel {
     width: 650px;
-    /* Más ancho para un aspecto más épico */
     height: 350px;
     padding: 0px 10px;
-    /* Espaciado lateral para que no se peguen */
     perspective: 1000px;
     flex-shrink: 0;
 }
 
-.carrusel-item img {
+.itemCarrusel img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* Ahora toma el 100% del contenedor */
     border: 1px solid #4a0404;
     filter: grayscale(100%) contrast(1.2) brightness(0.6);
     transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.9);
 }
 
-.carrusel-item:hover img {
+.itemCarrusel:hover img {
     filter: grayscale(20%) brightness(0.9) contrast(1.1);
     transform: scale(1.08) translateZ(50px);
     border-color: #7a0606;
@@ -354,14 +344,12 @@ nav ul li a:hover {
     }
 }
 
-/* Animaciones del home*/
-/* Nuevo Carrusel: Cartelera Semanal */
-.weekly-billboard {
+.carteleraSemanal {
     padding: 60px 0;
     background: linear-gradient(to bottom, transparent, rgba(10, 10, 10, 0.8));
 }
 
-.billboard-container {
+.contenedorCartelera {
     width: 90%;
     max-width: 1300px;
     margin: 0 auto;
@@ -370,22 +358,20 @@ nav ul li a:hover {
     align-items: center;
 }
 
-.billboard-grid {
+.rejillaCartelera {
     display: flex;
     gap: 20px;
     overflow-x: auto;
     scroll-behavior: smooth;
     padding: 20px 0;
     scrollbar-width: none;
-    /* Ocultar scrollbar en Firefox */
 }
 
-.billboard-grid::-webkit-scrollbar {
+.rejillaCartelera::-webkit-scrollbar {
     display: none;
-    /* Ocultar scrollbar en Chrome/Safari */
 }
 
-.movie-card {
+.tarjetaPelicula {
     min-width: 280px;
     background: #050505;
     border: 1px solid #2b0000;
@@ -396,12 +382,12 @@ nav ul li a:hover {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.8);
 }
 
-.movie-card:hover {
+.tarjetaPelicula:hover {
     transform: translateY(-10px);
     border-color: #7a0606;
 }
 
-.card-tag {
+.etiquetaTarjeta {
     background: #7a0606;
     color: #fff;
     font-size: 0.8rem;
@@ -411,7 +397,7 @@ nav ul li a:hover {
     letter-spacing: 2px;
 }
 
-.movie-card img {
+.tarjetaPelicula img {
     width: 100%;
     height: 400px;
     object-fit: cover;
@@ -419,11 +405,11 @@ nav ul li a:hover {
     transition: filter 0.3s ease;
 }
 
-.movie-card:hover img {
+.tarjetaPelicula:hover img {
     filter: grayscale(0%);
 }
 
-.buy-button {
+.botonComprar {
     background: #7a0606;
     color: #fff;
     border: none;
@@ -436,12 +422,11 @@ nav ul li a:hover {
     letter-spacing: 1px;
 }
 
-.buy-button:hover {
+.botonComprar:hover {
     background: #a30808;
 }
 
-/* Navegación del Billboard */
-.billboard-nav {
+.navegacionCartelera {
     background: transparent;
     border: none;
     color: #7a0606;
@@ -452,7 +437,7 @@ nav ul li a:hover {
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.billboard-nav:hover {
+.navegacionCartelera:hover {
     color: #ff0000;
     transform: scale(1.2);
 }
@@ -469,13 +454,110 @@ nav ul li a:hover {
     }
 }
 
-.hero-section>* {
+.seccionHero>* {
     animation: fadeIn 1s ease forwards;
 }
 
-/* Ajuste margen hero */
-.hero-section {
-    margin-top: 100px;
-    /* Espacio para el nav */
-    padding-bottom: 20px;
+.promocionesEspeciales {
+    padding: 60px 0;
+    margin-bottom: 50px;
+}
+
+.contenedorPromos {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.envolturaPistaPromos {
+    width: 100%;
+    overflow: hidden;
+    padding: 60px 0;
+}
+
+.pistaPromos {
+    display: flex;
+    gap: 0;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+    justify-content: center;
+}
+
+.diapositivaPromo {
+    min-width: 450px;
+    height: 300px;
+    background: #000;
+    border: 2px solid #2b0000;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    cursor: pointer;
+    position: relative;
+    transform: scale(0.8) translateZ(-100px);
+    opacity: 0.5;
+    filter: grayscale(80%) blur(2px);
+    z-index: 1;
+}
+
+.diapositivaPromo.activa {
+    transform: scale(1.1) translateZ(100px);
+    opacity: 1;
+    filter: grayscale(0%) blur(0);
+    z-index: 10;
+    border-color: #7a0606;
+    box-shadow: 0 20px 60px rgba(122, 6, 6, 0.5);
+}
+
+.diapositivaPromo img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    display: block;
+    transition: all 0.5s ease;
+}
+
+.diapositivaPromo.activa:hover {
+    transform: scale(1.15) translateZ(120px);
+    box-shadow: 0 30px 80px rgba(122, 6, 6, 0.7);
+}
+
+.navegacionCartelera,
+.navegacionPromo {
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #4a0404;
+    color: #7a0606;
+    font-size: 2.5rem;
+    cursor: pointer;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.navegacionCartelera:hover,
+.navegacionPromo:hover {
+    background: #7a0606;
+    color: #fff;
+    transform: scale(1.1);
+    box-shadow: 0 0 30px #7a0606;
+}
+
+.navegacionPromo.previo {
+    position: absolute;
+    left: 50px;
+}
+
+.navegacionPromo.siguiente {
+    position: absolute;
+    right: 50px;
 }

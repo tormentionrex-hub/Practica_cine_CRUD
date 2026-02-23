@@ -1,110 +1,106 @@
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('Cine Explore - Home Initialized');
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("Horrorix - Inicio Inicializado");
 
-    // --- Lógica del Botón ---
-    const exploreBtn = document.getElementById('exploreBtn');
-    if (exploreBtn) {
-        exploreBtn.addEventListener('click', () => {
-            window.location.href = 'Cartelera.html';
-        });
-    }
+    const contenedorBanners = document.getElementById("pistaBannersId");
+    const botonAnteriorBanners = document.getElementById("botonPrevioBannerId");
+    const botonSiguienteBanners = document.getElementById("botonSiguienteBannerId");
+    let diapositivaActualIndice = 0;
+    const totalDiapositivas = 3;
+    const intervaloTiempo = 45000; // 45 segundos
 
-    // --- Lógica del Carrusel Siniestro ---
-    const carruselTrack = document.getElementById('carruselTrack');
-
-    // Lista de imágenes (excluyendo walpaperhome)
-    const images = [
-        'El exorcista.jpg',
-        'Scream.jpg',
-        'Siniestro.jpg',
-        'hallowen.jpg', // Nota: corregir si el nombre es diferente
-        'rec.jpg',
-        'viernes13.jpg'
-    ];
-
-    if (carruselTrack) {
-        // Función para crear un item
-        const createItem = (src) => {
-            const div = document.createElement('div');
-            div.className = 'carrusel-item';
-            const img = document.createElement('img');
-            img.src = `../img/${src}`;
-            img.alt = src.split('.')[0];
-            img.loading = 'lazy';
-            div.appendChild(img);
-            return div;
-        };
-
-        // Duplicar imágenes más veces para el efecto infinito con items anchos
-        const allImages = [...images, ...images, ...images, ...images];
-
-        allImages.forEach(src => {
-            carruselTrack.appendChild(createItem(src));
-        });
-    }
-
-    // --- Lógica del Carrusel de Banners (Promociones) ---
-    const bannerTrack = document.getElementById('bannerTrack');
-    const bannerPrev = document.getElementById('bannerPrev');
-    const bannerNext = document.getElementById('bannerNext');
-    let currentSlide = 0;
-    const totalSlides = 2; // publiBanner y publiBanner2
-    const slideInterval = 45000; // 45 segundos
-
-    const updateBanner = () => {
-        if (bannerTrack) {
-            bannerTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+    const refrescarBanner = () => {
+        if (contenedorBanners) {
+            contenedorBanners.style.setProperty("--diapositivaActual", diapositivaActualIndice);
         }
     };
 
-    const nextSlide = () => {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        updateBanner();
+    const avanzarDiapositiva = () => {
+        diapositivaActualIndice = (diapositivaActualIndice + 1) % totalDiapositivas;
+        refrescarBanner();
     };
 
-    const prevSlide = () => {
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        updateBanner();
+    const retrocederDiapositiva = () => {
+        diapositivaActualIndice = (diapositivaActualIndice - 1 + totalDiapositivas) % totalDiapositivas;
+        refrescarBanner();
     };
 
-    if (bannerNext && bannerPrev) {
-        bannerNext.addEventListener('click', () => {
-            nextSlide();
-            resetInterval();
+    if (botonSiguienteBanners && botonAnteriorBanners) {
+        botonSiguienteBanners.addEventListener("click", () => {
+            avanzarDiapositiva();
+            reiniciarTemporizador();
         });
 
-        bannerPrev.addEventListener('click', () => {
-            prevSlide();
-            resetInterval();
+        botonAnteriorBanners.addEventListener("click", () => {
+            retrocederDiapositiva();
+            reiniciarTemporizador();
         });
     }
 
-    let intervalId = setInterval(nextSlide, slideInterval);
+    let idIntervalo = setInterval(avanzarDiapositiva, intervaloTiempo);
 
-    const resetInterval = () => {
-        clearInterval(intervalId);
-        intervalId = setInterval(nextSlide, slideInterval);
+    const reiniciarTemporizador = () => {
+        clearInterval(idIntervalo);
+        idIntervalo = setInterval(avanzarDiapositiva, intervaloTiempo);
     };
 
-    // --- Lógica de Cartelera Semanal (Grid con flechas) ---
-    const billboardGrid = document.getElementById('billboardGrid');
-    const billboardPrev = document.getElementById('billboardPrev');
-    const billboardNext = document.getElementById('billboardNext');
+    const rejillaPeliculas = document.getElementById("rejillaCarteleraId");
+    const botonAnteriorPeliculas = document.getElementById("botonPrevioCarteleraId");
+    const botonSiguientePeliculas = document.getElementById("botonSiguienteCarteleraId");
 
-    if (billboardGrid && billboardNext && billboardPrev) {
-        const scrollAmount = 300; // Desplazamiento por clic
+    if (rejillaPeliculas && botonSiguientePeliculas && botonAnteriorPeliculas) {
+        const cantidadDesplazamiento = 300;
 
-        billboardNext.addEventListener('click', () => {
-            billboardGrid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        botonSiguientePeliculas.addEventListener("click", () => {
+            rejillaPeliculas.scrollBy({ left: cantidadDesplazamiento, behavior: "smooth" });
         });
 
-        billboardPrev.addEventListener('click', () => {
-            billboardGrid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        botonAnteriorPeliculas.addEventListener("click", () => {
+            rejillaPeliculas.scrollBy({ left: -cantidadDesplazamiento, behavior: "smooth" });
         });
     }
 
-    // --- Efecto de Distorsión en Scroll ---
-    window.addEventListener('scroll', () => {
-        const scrolled = window.scrollY;
-    });
+    // --- Lógica del Carrusel de Promociones Especiales ---
+    const pistaPromos = document.getElementById("pistaPromosId");
+    const listaDiapositivasPromos = document.querySelectorAll(".diapositivaPromo");
+    const botonAnteriorPromos = document.getElementById("botonPrevioPromosId");
+    const botonSiguientePromos = document.getElementById("botonSiguientePromosId");
+
+    let indicePromocionActiva = 1;
+
+    const refrescarCarruselPromos = () => {
+        listaDiapositivasPromos.forEach((diapositiva, indice) => {
+            diapositiva.classList.remove("activa");
+
+            if (indice === indicePromocionActiva) {
+                diapositiva.classList.add("activa");
+            }
+        });
+
+        if (pistaPromos) {
+            const desplazamiento = (indicePromocionActiva - 1) * -450;
+            pistaPromos.style.transform = `translateX(${desplazamiento}px)`;
+        }
+    };
+
+    if (botonSiguientePromos && botonAnteriorPromos) {
+        botonSiguientePromos.addEventListener("click", () => {
+            if (indicePromocionActiva < listaDiapositivasPromos.length - 1) {
+                indicePromocionActiva++;
+            } else {
+                indicePromocionActiva = 0;
+            }
+            refrescarCarruselPromos();
+        });
+
+        botonAnteriorPromos.addEventListener("click", () => {
+            if (indicePromocionActiva > 0) {
+                indicePromocionActiva--;
+            } else {
+                indicePromocionActiva = listaDiapositivasPromos.length - 1;
+            }
+            refrescarCarruselPromos();
+        });
+    }
+
+    refrescarCarruselPromos();
 });
